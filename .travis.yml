@@ -20,7 +20,7 @@ branches:
     - python3
 
 script:
-  - coverage run --source=app manage.py test --settings=associados.settings_test --verbosity=2
+  - coverage run --source=associados manage.py test --settings=config.settings.local --verbosity=2
 
 cache: pip
 
