@@ -7,8 +7,8 @@ from django.test import TestCase
 from django.utils import timezone
 
 from django_dynamic_fixture import G
-from app.members.models import Member, Category
-from app.payment.models import Payment, Transaction, PaymentType
+from associados.members.models import Member, Category
+from associados.payment.models import Payment, Transaction, PaymentType
 
 
 class MemberTestCase(TestCase):

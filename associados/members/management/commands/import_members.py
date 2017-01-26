@@ -6,8 +6,8 @@ import datetime
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 
-from app.members.models import Member, Category
-from app.payment.models import Payment, PaymentType, Transaction
+from associados.members.models import Member, Category
+from associados.payment.models import Payment, PaymentType, Transaction
 from lista_associados import lista
 
 class Command(BaseCommand):

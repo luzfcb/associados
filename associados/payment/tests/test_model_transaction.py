@@ -2,9 +2,9 @@
 from django.conf import settings
 from django.db import models
 from unittest.case import TestCase
-from app.members.tests.helpers import create_user_with_member
-from app.payment.models import Payment, PaymentType, Transaction
-from app.util import get_all_field_names
+from associados.members.tests.helpers import create_user_with_member
+from associados.payment.models import Payment, PaymentType, Transaction
+from associados.util import get_all_field_names
 
 
 class TransacitonModelTestCase(TestCase):

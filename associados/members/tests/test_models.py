@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.test import TestCase
-from app.members.models import Category, Organization, City
+from associados.members.models import Category, Organization, City
 
 
 class OutputInformatio(TestCase):

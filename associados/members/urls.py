@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
-from app.members.views import MemberListView, member_form, dashboard, SignupView, member_status, member_json
+from associados.members.views import MemberListView, member_form, dashboard, SignupView, member_status, member_json
 
 urlpatterns = (
     url(r'^signup/$', SignupView.as_view(), name='members-signup'),

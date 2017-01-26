@@ -6,6 +6,7 @@ from django.db import migrations
 
 def load_fixture(apps, schema_editor):
     call_command('loaddata', 'site_init.json', app_label='core')
+from django.contrib.auth.models import User
 
 
 class Migration(migrations.Migration):

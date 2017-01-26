@@ -2,8 +2,8 @@
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.test import TestCase
-from app.authemail.forms import RegisterForm
-from app.authemail.backends import EmailBackend
+from associados.authemail.forms import RegisterForm
+from associados.authemail.backends import EmailBackend
 
 
 class ValidFormTest(TestCase):

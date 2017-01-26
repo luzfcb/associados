@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from localflavor.br.br_states import STATE_CHOICES
 from django.contrib.auth.models import User
 
-from app.core.models import DefaultFields
+from associados.core.models import DefaultFields
 from django_gravatar.helpers import get_gravatar_url
 
 

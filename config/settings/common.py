@@ -1,14 +1,26 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
+import environ
 import os
 import dj_database_url
-from django.core.urlresolvers import reverse_lazy
+try:
+    from django.urls import reverse_lazy
+except:
+    from django.core.urlresolvers import reverse_lazy
+
+env = environ.Env()
+# env.read_env()
+
+
+ROOT_DIR = environ.Path(__file__) - 3
+APPS_DIR = ROOT_DIR.path('associados')
+BASEDIR = APPS_DIR
+print(ROOT_DIR)
+print(BASEDIR)
 
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 #TEMPLATE_DEBUG = DEBUG
-BASEDIR = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 ADMINS = (
     # ('Marcos Daniel Petry', 'marcospetry@gmail.com'),
@@ -24,8 +36,8 @@ DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 # Miscelaneous
 APPEND_SLASH = True
 SITE_ID = 1
-ROOT_URLCONF = 'associados.urls'
-WSGI_APPLICATION = 'associados.wsgi.application'
+ROOT_URLCONF = 'config.urls'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # i18n & l10n
@@ -57,9 +69,11 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('BUCKET_SECRET_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('BUCKET_NAME')
 AWS_REGION_BUCKET_NAME = os.environ.get("BUCKET_REGION")
 
-MEDIA_ROOT = '/%s/' % DEFAULT_S3_PATH
+# MEDIA_ROOT = '/%s/' % DEFAULT_S3_PATH
+MEDIA_ROOT = str(ROOT_DIR.path('media'))
 MEDIA_URL = '//%s.%s.amazonaws.com/media/' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION_BUCKET_NAME)
-STATIC_ROOT = "/%s/" % STATIC_S3_PATH
+# STATIC_ROOT = "/%s/" % STATIC_S3_PATH
+STATIC_ROOT = str(ROOT_DIR.path('static'))
 STATIC_URL = '//%s.%s.amazonaws.com/static/' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION_BUCKET_NAME)
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
@@ -74,29 +88,46 @@ LOGIN_URL = '/'
 LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('members-dashboard')
 AUTHENTICATION_BACKENDS = (
-    'app.authemail.backends.EmailBackend',
+    'associados.authemail.backends.EmailBackend',
 )
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 
-# Templates & Middlewares
-# TEMPLATE_LOADERS = (
-#     'django.template.loaders.filesystem.Loader',
-#     'django.template.loaders.app_directories.Loader',
-# )
-
-#TEMPLATE_DIRS = ()
-
+# TEMPLATE CONFIGURATION
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#templates
 TEMPLATES = [
     {
+        # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
+        'DIRS': [
+            str(APPS_DIR.path('templates')),
+        ],
         'OPTIONS': {
-            # ... some options here ...
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
+            'debug': DEBUG,
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+            # https://docs.djangoproject.com/en/dev/ref/templates/api/#loader-types
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ],
+            # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                # Your stuff: custom template context processors go here
+            ],
         },
-    }
+    },
 ]
 
 
@@ -112,14 +143,17 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
+MIGRATION_MODULES = {
+    'municipios': 'associados.municipios.migrations'
+}
 
 # Apps
 INSTALLED_APPS = (
     #apps
-    'associados',
-    'app.members',
-    'app.payment',
-    'app.core',
+    # '',
+    'associados.members',
+    'associados.payment',
+    'associados.core',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -212,8 +246,8 @@ PIPELINE = {
 
 }
 
-# Local settings
-try:
-    exec(open('associados/settings_local.py').read())
-except IOError:
-    pass
+# # Local settings
+# try:
+#     exec(open('associados/settings_local.py').read())
+# except IOError:
+#     pass

@@ -4,7 +4,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
-from app.payment.models import Payment, Transaction, PaymentType
+from associados.payment.models import Payment, Transaction, PaymentType
 
 
 class TransactionInline(admin.StackedInline):

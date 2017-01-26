@@ -17,8 +17,8 @@ from django.utils.translation import ugettext
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 
-from app.members.models import Member
-from app.payment.models import Payment, Transaction, PaymentType
+from associados.members.models import Member
+from associados.payment.models import Payment, Transaction, PaymentType
 
 
 logger = logging.getLogger(__name__)

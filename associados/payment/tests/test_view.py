@@ -11,10 +11,10 @@ from django.utils import timezone
 from django_dynamic_fixture import G
 from django.core import mail
 
-from app.members.models import Member, Category
-from app.payment import views
-from app.payment.models import Payment, Transaction, PaymentType
-from app.payment.views import PaymentView, NotificationView
+from associados.members.models import Member, Category
+from associados.payment import views
+from associados.payment.models import Payment, Transaction, PaymentType
+from associados.payment.views import PaymentView, NotificationView
 
 
 class MemberTestCase(TestCase):

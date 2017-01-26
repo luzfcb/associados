@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
-from app.members.models import Category, Member
+from associados.members.models import Category, Member
 from django_dynamic_fixture import G
 
 

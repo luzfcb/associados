@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # encoding: utf-8
 from django.test import TestCase
-from app.members.forms import MemberForm, UserForm
-from app.members.models import Organization, User, Category, Member
-from app.payment.models import Payment, PaymentType, Transaction
-from app.members.tests.helpers import create_user_with_member
+from associados.members.forms import MemberForm, UserForm
+from associados.members.models import Organization, User, Category, Member
+from associados.payment.models import Payment, PaymentType, Transaction
+from associados.members.tests.helpers import create_user_with_member
 from django.utils.translation import ugettext_lazy as _
 
 

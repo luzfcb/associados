@@ -23,3 +23,18 @@ class DefaultFields(models.Model):
 class TestDefaultFields(DefaultFields):
     "just for test manager"
     pass
+
+from django.db.models import F, Func
+from django.db.models.functions import TruncDate
+
+
+class DateFunc(Func):
+    function = 'DATE'
+
+def get_others_with_last_login_on_the_same_day(pk):
+    # retorna um QuerySet cujo resultado é uma lista com unico elemento
+    person_last_login_list = Person.objects.annotate(last_login_date=TruncDate(F('last_login'))).filter(pk=pk).values('last_login_date')
+
+    persons = Person.objects.annotate(last_login_date=TruncDate(F('last_login'))).filter(last_login_date__in=person_last_login_list).exclude(pk=pk)
+
+    return persons

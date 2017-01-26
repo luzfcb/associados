@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
-from app.payment.views import NotificationView, PaymentView
+from associados.payment.views import NotificationView, PaymentView
 
 urlpatterns = (
     url(r'^notification/$', NotificationView.as_view(), name='payment-notification'),

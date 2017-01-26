@@ -5,7 +5,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.utils import timezone
 
-from app.members.models import Member, Category
+from associados.members.models import Member, Category
 
 
 TRANSACTION_STATUS = (

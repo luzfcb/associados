@@ -2,7 +2,7 @@
 
 
 from django.contrib import admin
-from app.members.models import Category, Member, Organization, City
+from associados.members.models import Category, Member, Organization, City
 #from models import Member, Organization, City
 
 
