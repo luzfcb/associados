@@ -25,7 +25,7 @@ DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 APPEND_SLASH = True
 SITE_ID = 1
 ROOT_URLCONF = 'associados.urls'
-WSGI_APPLICATION = 'associados.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # i18n & l10n
@@ -74,7 +74,7 @@ LOGIN_URL = '/'
 LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('members-dashboard')
 AUTHENTICATION_BACKENDS = (
-    'app.authemail.backends.EmailBackend',
+    'associados.authemail.backends.EmailBackend',
 )
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
@@ -117,9 +117,9 @@ MIDDLEWARE_CLASSES = (
 INSTALLED_APPS = (
     #apps
     'associados',
-    'app.members',
-    'app.payment',
-    'app.core',
+    'associados.members',
+    'associados.payment',
+    'associados.core',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -214,6 +214,6 @@ PIPELINE = {
 
 # Local settings
 try:
-    exec(open('associados/settings_local.py').read())
+    exec(open('config/settings_local.py').read())
 except IOError:
     pass

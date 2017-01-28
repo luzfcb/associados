@@ -8,7 +8,7 @@ execfile('lista_associados.py')
 """
 
 from django.contrib.auth.models import User
-from app.payment.models import Payment
+from associados.payment.models import Payment
 import datetime
 
 cyear = datetime.datetime.now().year
@@ -23,7 +23,7 @@ estudantes = []
 efetivos = []
 
 for p in payments:
-    #print p.member, p.date.strftime('%Y-%m-%d'), p.valid_until.strftime('%Y-%m-%d'), p.type.category
+    #print(p.member, p.date.strftime('%Y-%m-%d'), p.valid_until.strftime('%Y-%m-%d'), p.type.category)
     if p.type.category.name == 'Efetivo':
         efetivos.append(p)
     else:
@@ -31,11 +31,11 @@ for p in payments:
 
 
 # TODO: inserir user_email[p.member.user]
-print "Efetivos:"
+print("Efetivos:")
 for p in efetivos:
-    print "Nome:", p.member, "CPF:", p.member.cpf, "Email:", p.member.user.email, "Ass:"
+    print("Nome:", p.member, "CPF:", p.member.cpf, "Email:", p.member.user.email, "Ass:")
 
 
-print "Estudantes:"
+print("Estudantes:")
 for p in estudantes:
-    print "Nome:", p.member, "CPF:", p.member.cpf, "Email:", p.member.user.email, "Ass:"
+    print("Nome:", p.member, "CPF:", p.member.cpf, "Email:", p.member.user.email, "Ass:")

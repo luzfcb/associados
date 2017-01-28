@@ -13,7 +13,7 @@ from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils import timezone, translation
 
-from app.payment.models import Payment
+from associados.payment.models import Payment
 
 
 class Command(BaseCommand):

@@ -41,7 +41,7 @@ node_modules
 env*
 
 settings_local.py
-associados/static/docs/*
+config/static/docs/*
 htmlcov/*
 
 # Database

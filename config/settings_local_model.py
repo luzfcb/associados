@@ -8,8 +8,8 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'associados',
-        'USER': 'associados',
+        'NAME': 'config',
+        'USER': 'config',
         'PASSWORD': 'assocdev',
         'HOST': 'localhost'
     }

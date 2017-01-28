@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from app.members.tests.helpers import create_user_with_member
+from associados.members.tests.helpers import create_user_with_member
 
 
 class DashboardView(TestCase):

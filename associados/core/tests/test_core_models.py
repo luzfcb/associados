@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 from django.test import TestCase
-from app.core.models import TestDefaultFields
+from associados.core.models import TestDefaultFields
 from django_dynamic_fixture import G
 
 

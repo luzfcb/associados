@@ -12,8 +12,8 @@ from django.utils import timezone
 
 from django_dynamic_fixture import G
 
-from app.members.models import Member
-from app.payment.models import Payment, PaymentType, Transaction
+from associados.members.models import Member
+from associados.payment.models import Payment, PaymentType, Transaction
 
 
 class RenewalAlertTest(TestCase):

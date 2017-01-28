@@ -11,9 +11,9 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView
 
-from app.members.models import Category, Member
-from app.members.forms import MemberForm, UserForm
-from app.authemail.forms import RegisterForm
+from associados.members.models import Category, Member
+from associados.members.forms import MemberForm, UserForm
+from associados.authemail.forms import RegisterForm
 
 import json
 
